@@ -1,13 +1,13 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable("agents",(table)=>{
+  return knex.schema.createTable("players",(table)=>{
     table.increments();
     table.string("player_name");
-    table.integer("wins").defaultTo(0);
-    table.boolean("judge").defaultTo("false");
+    table.string("player_email").unique();
+    table.string("password");
   });
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable("appointments");
+  return knex.schema.dropTable("players");
 };
